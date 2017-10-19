@@ -1,0 +1,2 @@
+# retronix
+RetroArch + NixOS + Opinions
