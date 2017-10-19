@@ -1,0 +1,4 @@
+[submodule "dependencies/RetroArch"]
+	path = dependencies/RetroArch
+	url = git@github.com:coreyoconnor/RetroArch.git
+	branch = master
