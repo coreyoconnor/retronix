@@ -24,4 +24,16 @@ with lib;
       type = with types; str;
     };
   };
+
+  config =
+  {
+    services.xserver.desktopManager.session = [{
+      name = "retronix";
+      start = ''
+        export LD_LIBRARY_PATH=$${LD_LIBRARY_PATH}:${pkgs.libpng12}/lib
+        ${pkgs.retroarch}/bin/retroarch &
+        waitPID=$!
+      '';
+    }];
+  };
 }
