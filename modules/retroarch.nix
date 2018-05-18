@@ -10,16 +10,16 @@ let
 
     libretro = super.libretro //
     {
-      parallel-n64 = super.libretro.parallel-n64.overrideAttrs ( oldAttrs:
-      {
-        src = pkgs.fetchgit
-        {
-          url = "https://github.com/libretro/parallel-n64.git";
-          rev = "ceca922a0efc0cc99b670068ded63e9add02fb98";
-          sha256 = "1hxanzg95a5jn6sjqhgkj8d0mrv6kn07phz5h81rdpxvy6msivz3";
-          fetchSubmodules = true;
-        };
-      });
+      #parallel-n64 = super.libretro.parallel-n64.overrideAttrs ( oldAttrs:
+      #{
+      #  src = pkgs.fetchgit
+      #  {
+      #    url = "https://github.com/libretro/parallel-n64.git";
+      #    rev = "ceca922a0efc0cc99b670068ded63e9add02fb98";
+      #    sha256 = "1hxanzg95a5jn6sjqhgkj8d0mrv6kn07phz5h81rdpxvy6msivz3";
+      #    fetchSubmodules = true;
+      #  };
+      #});
     };
   };
 in
