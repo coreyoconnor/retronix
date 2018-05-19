@@ -30,6 +30,11 @@ with lib;
     services.xserver.desktopManager.session = [{
       name = "retronix";
       start = ''
+        mkdir -p $HOME/.config/retroarch/cores
+        cp --remove-destination ${pkgs.retroarch}/lib/*.so $HOME/.config/retroarch/cores/
+        # pre-compiled cores will be copied read-only. This will block the auto updater,
+        # though this is intentional: The precompiled ones should be those that *must*
+        # be compiled via nix.
         ${pkgs.retroarch}/bin/retroarch &
         waitPID=$!
       '';
