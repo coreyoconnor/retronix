@@ -39,7 +39,6 @@ in
       {
         enableBeetlePCEFast = true;
         enableBeetlePSX = true;
-        enableDolphin = true;
         enableMBGA = true;
         enableMupen64Plus = true;
         enableParallelN64 = true;
