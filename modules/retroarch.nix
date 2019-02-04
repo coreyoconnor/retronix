@@ -3,15 +3,17 @@
 let
   retroarchForkOverride = super: rec {
     retroarchBare = super.retroarchBare.overrideAttrs ( oldAttrs: rec {
-      version = "1.7.4";
+      version = "1.7.7";
       name = "retroarch-bare-${version}";
 
       src = pkgs.fetchFromGitHub {
         owner = "libretro";
         repo = "RetroArch";
-        sha256 = "0031gws78whcfc2bnlhmiwg7iw5x7kvnh5kfjswjsvwnhkc4jmaq";
-        rev = "6463f7005b76b5119616c9eb725d4f4338db7383";
+        sha256 = "1w8zq67f6njbnhncji55pahffd0psala68ckb47vn12fjj9jfdkl";
+        rev = "12c6fe1dc0c623e6f92d142034825bc4276d1952";
       };
+
+      buildInputs = oldAttrs.buildInputs ++ [ pkgs.xorg.libXrandr ];
     });
 
     retroArchCores = super.retroArchCores ++ [ pkgs.libretro.beetle-psx-hw ];
@@ -20,8 +22,8 @@ let
       beetle-psx = super.libretro.beetle-psx.overrideAttrs ( oldAttrs: {
         src = pkgs.fetchgit {
           url = "https://github.com/libretro/beetle-psx-libretro.git";
-          rev = "380a34a48dfd09945efaa717754d8455169704a1";
-          sha256 = "13iz49agkngpndrrr6a4qf3v90gpf2d3jy6prkbv4zivhwibnn95";
+          rev = "53591985319edc34d83a0858ad9a935b934dcf5c";
+          sha256 = "1rs26l5vsfh4acck627kfrhxzrb2gcx9pwd6mfrfr2np4f5z63rr";
           fetchSubmodules = true;
         };
       });
