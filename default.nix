@@ -35,7 +35,7 @@ with lib;
         # pre-compiled cores will be copied read-only. This will block the auto updater,
         # though this is intentional: The precompiled ones should be those that *must*
         # be compiled via nix.
-        ${pkgs.retroarch}/bin/retroarch --verbose &
+        ${pkgs.retroarch}/bin/retroarch --verbose --nick UFO &
         waitPID=$!
       '';
     }];
