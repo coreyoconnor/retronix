@@ -9,8 +9,8 @@ let
       src = pkgs.fetchFromGitHub {
         owner = "libretro";
         repo = "RetroArch";
-        sha256 = "1w8zq67f6njbnhncji55pahffd0psala68ckb47vn12fjj9jfdkl";
-        rev = "12c6fe1dc0c623e6f92d142034825bc4276d1952";
+        sha256 = "19zkj6ywnmmmsnr5hh17sfjyq0g53w711g6px81z3kvm4n9j48jd";
+        rev = "ad7da9736aa31d7cfe3169c28b0c35a21f5da670";
       };
 
       buildInputs = oldAttrs.buildInputs ++ [ pkgs.xorg.libXrandr ];
@@ -34,6 +34,24 @@ let
         HAVE_HW = true;
         buildInputs = [ pkgs.libGL pkgs.libGLU ] ++ oldAttrs.buildInputs;
         passthru = oldAttrs.passthru // { inherit core; };
+      });
+
+      bsnes-mercury = super.libretro.bsnes-mercury.overrideAttrs ( oldAttrs: {
+        src = pkgs.fetchgit {
+          url = "https://github.com/libretro/bsnes-mercury.git";
+          rev = "4e221df676ffc7b46d083cf2ae100131eabe5076";
+          sha256 = "0rnqm4gapkng35q7gpqrf6mzki67fhd2hvcfsqkksqhwrr7gnb4y";
+          fetchSubmodules = true;
+        };
+      });
+
+      quicknes = super.libretro.quicknes.overrideAttrs ( oldAttrs: {
+        src = pkgs.fetchgit {
+          url = "https://github.com/libretro/QuickNES_Core.git";
+          rev = "960ae34b6bfda124daf2fa4958829572c3ff7514";
+          sha256 = "0s7lcbwv6n3804ccyv32k0c10kcspf4pq1ypz7r4iidwijq63i8m";
+          fetchSubmodules = true;
+        };
       });
 
       #parallel-n64 = super.libretro.parallel-n64.overrideAttrs ( oldAttrs:
@@ -60,11 +78,12 @@ in
 
     nixpkgs.config =
     {
-      packageOverrides = retroarchForkOverride;
+      # packageOverrides = retroarchForkOverride;
       retroarch =
       {
         enableBeetlePCEFast = true;
         enableBeetlePSX = true;
+        enableBsnesMercury = true;
         enableMBGA = true;
         enableMupen64Plus = true;
         enableParallelN64 = true;
