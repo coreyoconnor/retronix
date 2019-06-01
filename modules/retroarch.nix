@@ -9,8 +9,8 @@ let
       src = pkgs.fetchFromGitHub {
         owner = "libretro";
         repo = "RetroArch";
-        sha256 = "19zkj6ywnmmmsnr5hh17sfjyq0g53w711g6px81z3kvm4n9j48jd";
-        rev = "ad7da9736aa31d7cfe3169c28b0c35a21f5da670";
+        sha256 = "1a4mpyjh0cfjf5xyfk6c3d487ypcbk3b4wx749xzsg9blaf4aj6j";
+        rev = "5c7a5fdba0120566519bc85e42640fb2804256bb";
       };
 
       buildInputs = oldAttrs.buildInputs ++ [ pkgs.xorg.libXrandr ];
@@ -54,16 +54,14 @@ let
         };
       });
 
-      #parallel-n64 = super.libretro.parallel-n64.overrideAttrs ( oldAttrs:
-      #{
-      #  src = pkgs.fetchgit
-      #  {
-      #    url = "https://github.com/libretro/parallel-n64.git";
-      #    rev = "ceca922a0efc0cc99b670068ded63e9add02fb98";
-      #    sha256 = "1hxanzg95a5jn6sjqhgkj8d0mrv6kn07phz5h81rdpxvy6msivz3";
-      #    fetchSubmodules = true;
-      #  };
-      #});
+      parallel-n64 = super.libretro.parallel-n64.overrideAttrs ( oldAttrs: {
+        src = pkgs.fetchgit {
+          url = "https://github.com/libretro/parallel-n64.git";
+          rev = "68d89c77c37cb6d3da05245f75ea6f949096da96";
+          sha256 = "183hrn6fd07h26w1bd4h2rbjnibkj534hliqmna5lahk9aard6xg";
+          fetchSubmodules = true;
+        };
+      });
     };
   };
 in
@@ -78,7 +76,7 @@ in
 
     nixpkgs.config =
     {
-      # packageOverrides = retroarchForkOverride;
+      packageOverrides = retroarchForkOverride;
       retroarch =
       {
         enableBeetlePCEFast = true;
