@@ -22,8 +22,8 @@ let
       beetle-psx = super.libretro.beetle-psx.overrideAttrs ( oldAttrs: {
         src = pkgs.fetchgit {
           url = "https://github.com/libretro/beetle-psx-libretro.git";
-          rev = "53591985319edc34d83a0858ad9a935b934dcf5c";
-          sha256 = "1rs26l5vsfh4acck627kfrhxzrb2gcx9pwd6mfrfr2np4f5z63rr";
+          rev = "432feab5417e4690ad555fa2b14b34becc4acef9";
+          sha256 = "0f5qvbzb3i4xbl62zzcwx5060wxqcbzfxinfj1l2rn7zcj007icq";
           fetchSubmodules = true;
         };
       });
