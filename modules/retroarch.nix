@@ -24,6 +24,8 @@ let
           url = "https://github.com/libretro/beetle-psx-libretro.git";
           rev = "432feab5417e4690ad555fa2b14b34becc4acef9";
           sha256 = "0f5qvbzb3i4xbl62zzcwx5060wxqcbzfxinfj1l2rn7zcj007icq";
+          # rev = "beeee12bf1d353c2fd01f0ff3a8b6d42bb68f758";
+          # sha256 = "1lpqx1krgz68nnz20zh7p7jpqk2bxddhz57rjf2sgfi6yg9jd0mb";
           fetchSubmodules = true;
         };
       });
