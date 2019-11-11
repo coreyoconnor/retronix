@@ -25,8 +25,7 @@ with lib;
     };
   };
 
-  config =
-  {
+  config = mkIf config.retronix.enable {
     services.xserver.desktopManager.session = [{
       name = "retronix";
       start = ''
