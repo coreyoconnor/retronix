@@ -70,17 +70,14 @@ in
 {
   imports = [];
 
-  config =
-  {
+  config = mkIf config.retronix.enable {
     environment.systemPackages = [
       pkgs.retroarch
     ];
 
-    nixpkgs.config =
-    {
+    nixpkgs.config = {
       packageOverrides = retroarchForkOverride;
-      retroarch =
-      {
+      retroarch = {
         enableBeetlePCEFast = true;
         enableBeetlePSX = true;
         enableBsnesMercury = true;
