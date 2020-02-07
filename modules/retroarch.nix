@@ -1,20 +1,20 @@
-{ config, pkgs, ... }:
-
+{ config, pkgs, lib, ... }:
+with lib;
 let
   retroarchForkOverride = super: rec {
-    retroarchBare = super.retroarchBare.overrideAttrs ( oldAttrs: rec {
-      version = "1.7.7";
-      name = "retroarch-bare-${version}";
+    # retroarchBare = super.retroarchBare.overrideAttrs ( oldAttrs: rec {
+    #   version = "1.7.7";
+    #   name = "retroarch-bare-${version}";
 
-      src = pkgs.fetchFromGitHub {
-        owner = "libretro";
-        repo = "RetroArch";
-        sha256 = "1a4mpyjh0cfjf5xyfk6c3d487ypcbk3b4wx749xzsg9blaf4aj6j";
-        rev = "5c7a5fdba0120566519bc85e42640fb2804256bb";
-      };
+     #  src = pkgs.fetchFromGitHub {
+      #   owner = "libretro";
+     #    repo = "RetroArch";
+     #    sha256 = "1a4mpyjh0cfjf5xyfk6c3d487ypcbk3b4wx749xzsg9blaf4aj6j";
+     #    rev = "5c7a5fdba0120566519bc85e42640fb2804256bb";
+     #  };
 
-      buildInputs = oldAttrs.buildInputs ++ [ pkgs.xorg.libXrandr ];
-    });
+      # buildInputs = oldAttrs.buildInputs ++ [ pkgs.xorg.libXrandr ];
+    # });
 
     retroArchCores = super.retroArchCores ++ [ pkgs.libretro.beetle-psx-hw ];
 
@@ -79,15 +79,15 @@ in
       packageOverrides = retroarchForkOverride;
       retroarch = {
         enableBeetlePCEFast = true;
-        enableBeetlePSX = true;
+        # enableBeetlePSX = true;
         enableBsnesMercury = true;
         enableMBGA = true;
-        enableMupen64Plus = true;
-        enableParallelN64 = true;
-        enableNestopia = true;
+        # enableMupen64Plus = true;
+        # enableParallelN64 = true;
+        # enableNestopia = true;
         enableQuickNES = true;
         enableSnes9x = true;
-        enableSnes9xNext = true;
+        # enableSnes9xNext = true;
         enableVbaM = true;
       };
     };
