@@ -22,10 +22,8 @@ let
       beetle-psx = super.libretro.beetle-psx.overrideAttrs ( oldAttrs: {
         src = pkgs.fetchgit {
           url = "https://github.com/libretro/beetle-psx-libretro.git";
-          rev = "432feab5417e4690ad555fa2b14b34becc4acef9";
-          sha256 = "0f5qvbzb3i4xbl62zzcwx5060wxqcbzfxinfj1l2rn7zcj007icq";
-          # rev = "beeee12bf1d353c2fd01f0ff3a8b6d42bb68f758";
-          # sha256 = "1lpqx1krgz68nnz20zh7p7jpqk2bxddhz57rjf2sgfi6yg9jd0mb";
+          rev = "58e4fae9099a29d0ea71e7544c942978d35b181f";
+          sha256 = "1144180qxjlvnlg0vflpka9vl0gs5pmdr349bm42pc5xjpmls1jr";
           fetchSubmodules = true;
         };
       });
@@ -41,8 +39,8 @@ let
       bsnes-mercury = super.libretro.bsnes-mercury.overrideAttrs ( oldAttrs: {
         src = pkgs.fetchgit {
           url = "https://github.com/libretro/bsnes-mercury.git";
-          rev = "4e221df676ffc7b46d083cf2ae100131eabe5076";
-          sha256 = "0rnqm4gapkng35q7gpqrf6mzki67fhd2hvcfsqkksqhwrr7gnb4y";
+          rev = "4a382621da58ae6da850f1bb003ace8b5f67968c";
+          sha256 = "0z8psz24nx8497vpk2wya9vs451rzzw915lkw3qiq9bzlzg9r2wv";
           fetchSubmodules = true;
         };
       });
@@ -50,8 +48,8 @@ let
       quicknes = super.libretro.quicknes.overrideAttrs ( oldAttrs: {
         src = pkgs.fetchgit {
           url = "https://github.com/libretro/QuickNES_Core.git";
-          rev = "960ae34b6bfda124daf2fa4958829572c3ff7514";
-          sha256 = "0s7lcbwv6n3804ccyv32k0c10kcspf4pq1ypz7r4iidwijq63i8m";
+          rev = "31654810b9ebf8b07f9c4dc27197af7714364ea7";
+          sha256 = "15fr5a9hv7wgndb0fpmr6ws969him41jidzir2ix9xkb0mmvcm86";
           fetchSubmodules = true;
         };
       });
@@ -59,8 +57,8 @@ let
       parallel-n64 = super.libretro.parallel-n64.overrideAttrs ( oldAttrs: {
         src = pkgs.fetchgit {
           url = "https://github.com/libretro/parallel-n64.git";
-          rev = "68d89c77c37cb6d3da05245f75ea6f949096da96";
-          sha256 = "183hrn6fd07h26w1bd4h2rbjnibkj534hliqmna5lahk9aard6xg";
+          rev = "519e642015cd6fa79047eb7ace18486f08176da8";
+          sha256 = "0gkhhl4nxrqnfa19b5k9z17nra3nnhqmwdk94yxkynk6h4bayy87";
           fetchSubmodules = true;
         };
       });
@@ -79,11 +77,11 @@ in
       packageOverrides = retroarchForkOverride;
       retroarch = {
         enableBeetlePCEFast = true;
-        # enableBeetlePSX = true;
+        enableBeetlePSX = true;
         enableBsnesMercury = true;
         enableMBGA = true;
         # enableMupen64Plus = true;
-        # enableParallelN64 = true;
+        enableParallelN64 = true;
         # enableNestopia = true;
         enableQuickNES = true;
         enableSnes9x = true;
