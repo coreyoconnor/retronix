@@ -22,8 +22,8 @@ let
       beetle-psx = super.libretro.beetle-psx.overrideAttrs ( oldAttrs: {
         src = pkgs.fetchgit {
           url = "https://github.com/libretro/beetle-psx-libretro.git";
-          rev = "58e4fae9099a29d0ea71e7544c942978d35b181f";
-          sha256 = "1144180qxjlvnlg0vflpka9vl0gs5pmdr349bm42pc5xjpmls1jr";
+          rev = "71f2b39e5f5d0991e004fa0bd922caff7d3c1937";
+          sha256 = "19j7p8hiw2ik7zazs1lqfw3f9zlfr3069fsw54gbdbmsax4yfj0v";
           fetchSubmodules = true;
         };
       });
@@ -77,7 +77,10 @@ in
       packageOverrides = retroarchForkOverride;
       retroarch = {
         enableBeetlePCEFast = true;
+        enableBeetlePCFX = true;
         enableBeetlePSX = true;
+        enableBeetleSuperGrafx = true;
+        enableBeetleSaturn = true;
         enableBsnesMercury = true;
         enableMBGA = true;
         # enableMupen64Plus = true;
