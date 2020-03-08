@@ -26,12 +26,13 @@ let
           sha256 = "19j7p8hiw2ik7zazs1lqfw3f9zlfr3069fsw54gbdbmsax4yfj0v";
           fetchSubmodules = true;
         };
+        buildPhase = "make HAVE_LIGHTREC=1";
       });
 
       beetle-psx-hw = beetle-psx.overrideAttrs ( oldAttrs: rec {
         core = "mednafen-psx-hw";
         name = "beetle-psx-hw";
-        HAVE_HW = true;
+        buildPhase = "make HAVE_LIGHTREC=1 HAVE_HW=1";
         buildInputs = [ pkgs.libGL pkgs.libGLU ] ++ oldAttrs.buildInputs;
         passthru = oldAttrs.passthru // { inherit core; };
       });
