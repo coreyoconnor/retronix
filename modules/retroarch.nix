@@ -83,13 +83,12 @@ in
         enableBeetleSuperGrafx = true;
         enableBeetleSaturn = true;
         enableBsnesMercury = true;
+        enableGenesisPlusGX = true;
         enableMBGA = true;
-        # enableMupen64Plus = true;
         enableParallelN64 = true;
-        # enableNestopia = true;
+        enablePCSXRearmed = true;
         enableQuickNES = true;
         enableSnes9x = true;
-        # enableSnes9xNext = true;
         enableVbaM = true;
       };
     };
