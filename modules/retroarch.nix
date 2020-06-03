@@ -75,14 +75,16 @@ in
     ];
 
     nixpkgs.config = {
-      packageOverrides = retroarchForkOverride;
+      # packageOverrides = retroarchForkOverride;
       retroarch = {
         enableBeetlePCEFast = true;
         enableBeetlePCFX = true;
         enableBeetlePSX = true;
+        enableBeetlePSXHW = true;
         enableBeetleSuperGrafx = true;
         enableBeetleSaturn = true;
-        enableBsnesMercury = true;
+        enableBeetleSaturnHW = true;
+        enableBeetleSNES = true;
         enableGenesisPlusGX = true;
         enableMBGA = true;
         enableParallelN64 = true;
