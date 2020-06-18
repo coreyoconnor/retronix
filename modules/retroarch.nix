@@ -77,6 +77,7 @@ in
     nixpkgs.config = {
       # packageOverrides = retroarchForkOverride;
       retroarch = {
+        enableBeetleLynx = true;
         enableBeetlePCEFast = true;
         enableBeetlePCFX = true;
         enableBeetlePSX = true;
@@ -87,6 +88,7 @@ in
         enableBeetleSNES = true;
         enableGenesisPlusGX = true;
         enableMBGA = true;
+        enableMupen64Plus = true;
         enableParallelN64 = true;
         enablePCSXRearmed = true;
         enableQuickNES = true;
