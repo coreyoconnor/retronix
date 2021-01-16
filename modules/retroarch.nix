@@ -77,6 +77,8 @@ in
     nixpkgs.config = {
       # packageOverrides = retroarchForkOverride;
       retroarch = {
+        enableDesmume = true;
+        enableDolphin = true;
         enableBeetleLynx = true;
         enableBeetlePCEFast = true;
         enableBeetlePCFX = true;
@@ -94,6 +96,7 @@ in
         enableQuickNES = true;
         enableSnes9x = true;
         enableVbaM = true;
+        enableYabause = true;
       };
     };
   };
