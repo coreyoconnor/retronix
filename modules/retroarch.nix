@@ -93,6 +93,7 @@ in
         enableMupen64Plus = true;
         enableParallelN64 = true;
         enablePCSXRearmed = true;
+        enablePCSX2 = true;
         enableQuickNES = true;
         enableSnes9x = true;
         enableVbaM = true;
