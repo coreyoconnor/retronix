@@ -78,7 +78,7 @@ in
       # packageOverrides = retroarchForkOverride;
       retroarch = {
         enableDesmume = true;
-        enableDolphin = true;
+        # enableDolphin = true;
         enableBeetleLynx = true;
         enableBeetlePCEFast = true;
         enableBeetlePCFX = true;
