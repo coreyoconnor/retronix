@@ -94,6 +94,7 @@ in
         enableParallelN64 = true;
         enablePCSXRearmed = true;
         enablePCSX2 = true;
+        enablePPSSPP = true;
         enableQuickNES = true;
         enableSnes9x = true;
         enableVbaM = true;
