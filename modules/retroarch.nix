@@ -16,6 +16,7 @@ let
             rev = "8d610a69a97a3c6197f205747d4563bad49511cd";
             sha256 = "1hrv2a4brydi3vrqm05a9cc0636jp7scy5ch6szw9m3pr645i35r";
           };
+          patches = [];
         };
 
         dolphin = super.libretro.dolphin.override {
