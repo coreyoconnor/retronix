@@ -13,16 +13,16 @@ let
         ppsspp = super.libretro.ppsspp.override {
           src = super.fetchgit {
             url = "https://github.com/hrydgard/ppsspp";
-            rev = "7095115d476fdc9a970259c46953ed188343fc73";
-            sha256 = "158xmx2kw9ips25hmy87x5an4k1w3ywvn64r1m3g9yxi49facb7z";
+            rev = "8d610a69a97a3c6197f205747d4563bad49511cd";
+            sha256 = "1hrv2a4brydi3vrqm05a9cc0636jp7scy5ch6szw9m3pr645i35r";
           };
         };
 
         dolphin = super.libretro.dolphin.override {
           src = fetchRetro {
             repo = "dolphin";
-            rev = "2aa63c671241a8ea8502b654bb9c808fbbf6ce0b";
-            sha256 = "1dy2yj1k7jcay7z9ann0sqfh7d25mqnzmd22yqvg2z5xq5wmh8g5";
+            rev = "13ad7dd33b2d9ac442de890f0caafbd1a8d46c5d";
+            sha256 = "0ssyiw5yknv79chlb3am2l7i8nsyi5xgwnkfg3pkxigzbm1vp392";
           };
         };
       };
