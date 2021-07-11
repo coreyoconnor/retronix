@@ -34,7 +34,9 @@ in
 
   config = mkIf config.retronix.enable {
     environment.systemPackages = [
+      pkgs.glxinfo
       pkgs.retroarch
+      pkgs.vulkan-tools
     ];
 
     nixpkgs.config = {
