@@ -35,38 +35,12 @@ in
   config = mkIf config.retronix.enable {
     environment.systemPackages = [
       pkgs.glxinfo
-      pkgs.retroarch
+      pkgs.retroarchFull
       pkgs.vulkan-tools
     ];
 
     nixpkgs.config = {
-      packageOverrides = retroarchForkOverride;
-
-      retroarch = {
-        enableDesmume = true;
-        enableDolphin = true;
-        enableBeetleLynx = true;
-        enableBeetlePCEFast = true;
-        enableBeetlePCFX = true;
-        enableBeetlePSX = true;
-        enableBeetlePSXHW = true;
-        enableBeetleSuperGrafx = true;
-        enableBeetleSaturn = true;
-        enableBeetleSaturnHW = true;
-        enableBeetleSNES = true;
-        enableGenesisPlusGX = true;
-        enableMBGA = true;
-        enableMupen64Plus = true;
-        enableParallelN64 = true;
-        enablePCSXRearmed = true;
-        enablePCSX2 = true;
-        # enablePlay = true;
-        enablePPSSPP = true;
-        enableQuickNES = true;
-        enableSnes9x = true;
-        enableVbaM = true;
-        enableYabause = true;
-      };
+      # packageOverrides = retroarchForkOverride;
     };
   };
 }
