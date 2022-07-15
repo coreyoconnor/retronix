@@ -12,7 +12,7 @@ let cfg = config.retronix;
       src = cmd-on-event-src;
       outputHash = "063s7xnc6lh47b95z8wgdx0srhfd7hdl9sqlgzx9z519x4d07rnk";
     };
-    restart-display-manager = "${pkgs.systemd}/bin/systemctl restart display-manager.service";
+    restart-display-manager = "/run/current-system/sw/bin/systemctl restart display-manager.service";
 in {
   imports =
   [
@@ -59,6 +59,10 @@ in {
             command = restart-display-manager;
             options = [ "NOPASSWD" ];
           }
+          {
+            command = "/run/current-system/sw/bin/reboot";
+            options = [ "NOPASSWD" ];
+          }
         ];
       }
     ];
@@ -88,7 +92,8 @@ in {
            for controller in $controllers; do
              echo listening to $controller
              ${cmd-on-event.cmd-on-event}/bin/cmd-on-event from $controller \
-                 key BTN_MODE after 5000 exec sudo ${restart-display-manager} &
+                 key BTN_MODE after 5000 exec /run/wrappers/bin/sudo ${restart-display-manager} \; \
+                 key BTN_MODE after 10000 exec /run/wrappers/bin/sudo /run/current-system/sw/bin/reboot &
            done
            wait -n
         else
