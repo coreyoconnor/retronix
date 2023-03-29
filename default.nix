@@ -87,13 +87,15 @@ in {
       };
 
       script = ''
-        controllers=$(find /dev/input/by-id -iname '*Sony_*Controller*event-joystick')
+        controllers=$(find /dev/input/by-id -iname '*Sony_*Controller*event-joystick' -o -iname 'stadia-controller*' || exit 0)
         if [ -n "$controllers" ]; then
            for controller in $controllers; do
              echo listening to $controller
              ${cmd-on-event.cmd-on-event}/bin/cmd-on-event from $controller \
                  key BTN_MODE after 5000 exec /run/wrappers/bin/sudo ${restart-display-manager} \; \
-                 key BTN_MODE after 10000 exec /run/wrappers/bin/sudo /run/current-system/sw/bin/reboot &
+                 key BTN_MODE after 10000 exec /run/wrappers/bin/sudo /run/current-system/sw/bin/reboot \; \
+                 key BTN_TRIGGER_HAPPY after 5000 exec /run/wrappers/bin/sudo ${restart-display-manager} \; \
+                 key BTN_TRIGGER_HAPPY after 10000 exec /run/wrappers/bin/sudo /run/current-system/sw/bin/reboot &
            done
            wait -n
         else
@@ -115,5 +117,9 @@ in {
         waitPID=$!
       '';
     }];
+
+    services.udev.extraRules = ''
+      KERNEL=="event*", ATTRS{id/product}=="9400", ATTRS{id/vendor}=="18d1", MODE="0660", GROUP="plugdev", SYMLINK+="input/by-id/stadia-controller-$kernel"
+    '';
   };
 }
