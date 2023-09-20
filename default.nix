@@ -10,7 +10,7 @@ let cfg = config.retronix;
     cmd-on-event = (import cmd-on-event-src) {
       inherit pkgs;
       src = cmd-on-event-src;
-      outputHash = "1lyavkqzyblkq5lkx1y0lvvkj0x7lwzc6w409ry735x90df7sn72";
+      outputHash = "sha256-Vl4hogum9/+73xkzrQnPzinzbbe9HTP7JabvuWnEnQ0=";
     };
     restart-display-manager = "/run/current-system/sw/bin/systemctl restart display-manager.service";
 in {
