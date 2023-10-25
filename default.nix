@@ -2,16 +2,8 @@
 
 with lib;
 let cfg = config.retronix;
-    cmd-on-event-src = pkgs.fetchgit {
-      url = "https://gitlab.com/coreyoconnor/cmd-on-event.git";
-      rev = "6143143a85f0cde3093710937b7ecb019fbf43ec";
-      sha256 = "0ci1mmmlv2sw49kd30ck3y0fgcd9931vrxyr86zw3dm0ma6f9kjk";
-    };
-    cmd-on-event = (import cmd-on-event-src) {
-      inherit pkgs;
-      src = cmd-on-event-src;
-      outputHash = "sha256-o5gqU0RX4nJNQ4UKFGwafUJKBElF0j596kfkWfnv8aU=";
-    };
+    cmd-on-event-flake = builtins.getFlake "gitlab:coreyoconnor/cmd-on-event/b632c3007d33641d7fd29ba10df35adcb9412d7f";
+    cmd-on-event = cmd-on-event-flake.packages.x86_64-linux.default;
     restart-display-manager = "/run/current-system/sw/bin/systemctl restart display-manager.service";
 in {
   imports =
@@ -46,7 +38,7 @@ in {
 
   config = mkIf config.retronix.enable {
     environment.systemPackages = with pkgs; [
-      cmd-on-event.cmd-on-event
+      cmd-on-event
       wine
       winetricks
     ];
@@ -91,7 +83,7 @@ in {
         if [ -n "$controllers" ]; then
            for controller in $controllers; do
              echo listening to $controller
-             ${cmd-on-event.cmd-on-event}/bin/cmd-on-event from $controller \
+             ${cmd-on-event}/bin/cmd-on-event from $controller \
                  key BTN_MODE after 5000 exec /run/wrappers/bin/sudo ${restart-display-manager} \; \
                  key BTN_MODE after 10000 exec /run/wrappers/bin/sudo /run/current-system/sw/bin/reboot \; \
                  key BTN_TRIGGER_HAPPY after 5000 exec /run/wrappers/bin/sudo ${restart-display-manager} \; \
