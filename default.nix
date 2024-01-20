@@ -84,10 +84,10 @@ in {
            for controller in $controllers; do
              echo listening to $controller
              ${cmd-on-event}/bin/cmd-on-event from $controller \
-                 key BTN_MODE after 5000 exec /run/wrappers/bin/sudo ${restart-display-manager} \; \
-                 key BTN_MODE after 10000 exec /run/wrappers/bin/sudo /run/current-system/sw/bin/reboot \; \
-                 key BTN_TRIGGER_HAPPY after 5000 exec /run/wrappers/bin/sudo ${restart-display-manager} \; \
-                 key BTN_TRIGGER_HAPPY after 10000 exec /run/wrappers/bin/sudo /run/current-system/sw/bin/reboot &
+                 key BTN_MODE after 2000 exec /run/wrappers/bin/sudo ${restart-display-manager} \; \
+                 key BTN_MODE after 40000 exec /run/wrappers/bin/sudo /run/current-system/sw/bin/reboot \; \
+                 key BTN_TRIGGER_HAPPY after 2000 exec /run/wrappers/bin/sudo ${restart-display-manager} \; \
+                 key BTN_TRIGGER_HAPPY after 40000 exec /run/wrappers/bin/sudo /run/current-system/sw/bin/reboot &
            done
            wait -n
         else
