@@ -1,6 +1,6 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 
-with lib;
+with pkgs.lib;
 let cfg = config.retronix;
     cmd-on-event-flake = builtins.getFlake "gitlab:coreyoconnor/cmd-on-event/b632c3007d33641d7fd29ba10df35adcb9412d7f";
     cmd-on-event = cmd-on-event-flake.packages.x86_64-linux.default;
