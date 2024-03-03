@@ -1,32 +1,36 @@
-{ config, lib, pkgs, ... }:
-
-with lib;
-let cfg = config.retronix;
-    cmd-on-event-flake = builtins.getFlake "gitlab:coreyoconnor/cmd-on-event/b632c3007d33641d7fd29ba10df35adcb9412d7f";
-    cmd-on-event = cmd-on-event-flake.packages.x86_64-linux.default;
-    restart-display-manager = "/run/current-system/sw/bin/systemctl restart display-manager.service";
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib; let
+  cfg = config.retronix;
+  cmd-on-event-flake = builtins.getFlake "gitlab:coreyoconnor/cmd-on-event/b632c3007d33641d7fd29ba10df35adcb9412d7f";
+  cmd-on-event = cmd-on-event-flake.packages.x86_64-linux.default;
+  restart-display-manager = "/run/current-system/sw/bin/systemctl restart display-manager.service";
 in {
-  imports =
-  [
+  imports = [
     ./modules/retroarch.nix
   ];
 
-  options =
-  {
+  options = {
     retronix = {
-      enable = mkOption
-      {
-        default = false;
-        example = true;
-        type = with types; bool;
-      };
+      enable =
+        mkOption
+        {
+          default = false;
+          example = true;
+          type = with types; bool;
+        };
 
-      user = mkOption
-      {
-        default = "retronix";
-        example = "retronix";
-        type = with types; str;
-      };
+      user =
+        mkOption
+        {
+          default = "retronix";
+          example = "retronix";
+          type = with types; str;
+        };
 
       nick = mkOption {
         default = "retronix";
@@ -45,15 +49,15 @@ in {
 
     security.sudo.extraRules = [
       {
-        users = [ cfg.user ];
+        users = [cfg.user];
         commands = [
           {
             command = restart-display-manager;
-            options = [ "NOPASSWD" ];
+            options = ["NOPASSWD"];
           }
           {
             command = "/run/current-system/sw/bin/reboot";
-            options = [ "NOPASSWD" ];
+            options = ["NOPASSWD"];
           }
         ];
       }
@@ -61,7 +65,7 @@ in {
 
     systemd.services.pad-control = {
       enable = true;
-      wantedBy = [ "multi-user.target" ];
+      wantedBy = ["multi-user.target"];
 
       unitConfig = {
         RequiresMountsFor = "/dev/input";
@@ -97,18 +101,20 @@ in {
       '';
     };
 
-    services.xserver.desktopManager.session = [{
-      name = "retronix";
-      start = ''
-        mkdir -p $HOME/.config/retroarch/cores
-        cp --remove-destination ${pkgs.retroarchFull}/lib/*.so $HOME/.config/retroarch/cores/
-        # pre-compiled cores will be copied read-only. This will block the auto updater,
-        # This is intentional: The precompiled ones should be those that *must*
-        # be compiled via nix.
-        ${pkgs.retroarchFull}/bin/retroarch --verbose --nick ${cfg.nick} &
-        waitPID=$!
-      '';
-    }];
+    services.xserver.desktopManager.session = [
+      {
+        name = "retronix";
+        start = ''
+          mkdir -p $HOME/.config/retroarch/cores
+          cp --remove-destination ${pkgs.retroarchFull}/lib/*.so $HOME/.config/retroarch/cores/
+          # pre-compiled cores will be copied read-only. This will block the auto updater,
+          # This is intentional: The precompiled ones should be those that *must*
+          # be compiled via nix.
+          ${pkgs.retroarchFull}/bin/retroarch --verbose --nick ${cfg.nick} &
+          waitPID=$!
+        '';
+      }
+    ];
 
     services.udev.extraRules = ''
       KERNEL=="event*", ATTRS{id/product}=="9400", ATTRS{id/vendor}=="18d1", MODE="0660", GROUP="plugdev", SYMLINK+="input/by-id/stadia-controller-$kernel"

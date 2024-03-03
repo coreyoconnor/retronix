@@ -1,11 +1,14 @@
-{ config, pkgs, lib, ... }:
-with lib;
-let
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+with lib; let
   retroarchFull = pkgs.retroarchFull.override {
     inherit (pkgs.llvmPackages_15) stdenv;
   };
-in
-{
+in {
   imports = [];
 
   config = mkIf config.retronix.enable {
