@@ -66,10 +66,14 @@ in
 
           autoLogin = {
             enable = true;
-            user = config.retronix.user;
+            user = cfg.user;
           };
 
-          sddm.enable = true;
+          sddm = {
+            enable = true;
+            wayland.enable = true;
+          };
+
           sessionPackages = [
             retronix-session
             retronix-steam-session
