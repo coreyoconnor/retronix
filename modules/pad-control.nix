@@ -54,9 +54,7 @@ in
           if [ -n "$controllers" ]; then
              for controller in $controllers; do
                echo listening to $controller
-               ${cmd-on-event}/bin/cmd-on-event from $controller \
-                   key BTN_MODE after 2000 exec /run/wrappers/bin/sudo ${restart-display-manager} \; \
-                   key BTN_MODE after 40000 exec /run/wrappers/bin/sudo /run/current-system/sw/bin/reboot \; \
+               ${cmd-on-event-pkg}/bin/cmd-on-event from $controller \
                    key BTN_TRIGGER_HAPPY after 2000 exec /run/wrappers/bin/sudo ${restart-display-manager} \; \
                    key BTN_TRIGGER_HAPPY after 40000 exec /run/wrappers/bin/sudo /run/current-system/sw/bin/reboot &
              done

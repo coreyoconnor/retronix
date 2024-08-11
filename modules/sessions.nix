@@ -71,9 +71,12 @@ in
             user = cfg.user;
           };
 
+          logToFile = true;
+
           sddm = {
             enable = true;
             wayland.enable = true;
+            autoLogin.relogin = true;
           };
 
           sessionPackages = [
