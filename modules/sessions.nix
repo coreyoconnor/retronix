@@ -29,7 +29,7 @@
     exec ${pkgs.retroarchFull}/bin/retroarch --verbose
   '';
 
-  retronix-gamescope = pkgs.writeShellScriptBin "retronix-steam" ''
+  retronix-gamescope = pkgs.writeShellScriptBin "retronix-gamescope" ''
     exec gamescope --rt -- ${retronix}/bin/retronix
   '';
 
@@ -58,6 +58,8 @@ in
       };
 
       services = {
+        xserver.enable = true;
+
         displayManager = {
           defaultSession =
             if cfg.steamLauncher
