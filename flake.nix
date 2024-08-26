@@ -10,6 +10,7 @@
         # nixpkgs.follows = "nixpkgs";
       };
     };
+    poetry2nix.url = "github:nix-community/poetry2nix";
   };
 
   outputs = inputs @ {
@@ -17,13 +18,23 @@
     cmd-on-event,
     flake-utils,
     nixpkgs,
+    poetry2nix
   }:
     {
       nixosModules = {
         default = import ./modules inputs;
       };
     }
-    // flake-utils.lib.eachDefaultSystem (system: {
-      formatter = nixpkgs.legacyPackages.${system}.alejandra;
-    });
+    // flake-utils.lib.eachDefaultSystem (system:
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in {
+        formatter = nixpkgs.legacyPackages.${system}.alejandra;
+        packages = {
+          NonSteamLaunchers = pkgs.callPackage ./pkgs/NonSteamLaunchers.nix {
+            poetry2nixPkgs = poetry2nix.lib.mkPoetry2Nix { inherit pkgs; };
+          };
+        };
+      }
+    );
 }
