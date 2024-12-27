@@ -10,15 +10,13 @@
         # nixpkgs.follows = "nixpkgs";
       };
     };
-    poetry2nix.url = "github:nix-community/poetry2nix";
   };
 
   outputs = inputs @ {
     self,
     cmd-on-event,
     flake-utils,
-    nixpkgs,
-    poetry2nix
+    nixpkgs
   }:
     {
       nixosModules = {
@@ -31,9 +29,6 @@
       in {
         formatter = nixpkgs.legacyPackages.${system}.alejandra;
         packages = {
-          NonSteamLaunchers = pkgs.callPackage ./pkgs/NonSteamLaunchers.nix {
-            poetry2nixPkgs = poetry2nix.lib.mkPoetry2Nix { inherit pkgs; };
-          };
         };
       }
     );
