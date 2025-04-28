@@ -16,15 +16,15 @@
     self,
     cmd-on-event,
     flake-utils,
-    nixpkgs
+    nixpkgs,
   }:
     {
       nixosModules = {
         default = import ./modules inputs;
       };
     }
-    // flake-utils.lib.eachDefaultSystem (system:
-      let
+    // flake-utils.lib.eachDefaultSystem (
+      system: let
         pkgs = nixpkgs.legacyPackages.${system};
       in {
         formatter = nixpkgs.legacyPackages.${system}.alejandra;
