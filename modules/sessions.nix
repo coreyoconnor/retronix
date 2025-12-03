@@ -22,11 +22,11 @@
 
   retronix = pkgs.writeShellScriptBin "retronix" ''
     mkdir -p $HOME/.config/retroarch/cores
-    cp --remove-destination ${pkgs.retroarchFull}/lib/*.so $HOME/.config/retroarch/cores/
+    cp --remove-destination ${pkgs.retroarch-full}/lib/*.so $HOME/.config/retroarch/cores/
     # pre-compiled cores will be copied read-only. This will block the auto updater,
     # This is intentional: The precompiled ones should be those that *must*
     # be compiled via nix.
-    exec ${pkgs.retroarchFull}/bin/retroarch --verbose
+    exec ${pkgs.retroarch-full}/bin/retroarch --verbose
   '';
 
   retronix-gamescope = pkgs.writeShellScriptBin "retronix-gamescope" ''

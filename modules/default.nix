@@ -53,8 +53,8 @@ in {
       cmd-on-event.packages.${system}.default
       wine
       winetricks
-      glxinfo
-      retroarchFull
+      mesa-demos
+      retroarch-full
       vulkan-tools
     ];
 
