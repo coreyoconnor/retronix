@@ -1,10 +1,11 @@
-{self}: {
+{self, retroarch-exe}: {
   config,
   lib,
   pkgs,
   ...
 }: let
   inherit (pkgs.stdenv.hostPlatform) system;
+
   cfg = config.retronix;
   retronix-steam = pkgs.writeShellScriptBin "retronix-steam" ''
     exec gamescope --steam --rt -- steam -tenfoot -pipewire-dmabuf
@@ -22,11 +23,11 @@
 
   retronix = pkgs.writeShellScriptBin "retronix" ''
     mkdir -p $HOME/.config/retroarch/cores
-    cp --remove-destination ${pkgs.retroarch-full}/lib/*.so $HOME/.config/retroarch/cores/
+    cp --remove-destination ${retroarch-exe}/lib/*.so $HOME/.config/retroarch/cores/
     # pre-compiled cores will be copied read-only. This will block the auto updater,
     # This is intentional: The precompiled ones should be those that *must*
     # be compiled via nix.
-    exec ${pkgs.retroarch-full}/bin/retroarch --verbose
+    exec ${retroarch-exe}/bin/retroarch --verbose
   '';
 
   retronix-gamescope = pkgs.writeShellScriptBin "retronix-gamescope" ''

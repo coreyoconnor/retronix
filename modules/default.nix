@@ -8,9 +8,19 @@ with lib; let
   inherit (pkgs.stdenv.hostPlatform) system;
   inherit (inputs) self cmd-on-event;
   cfg = config.retronix;
+  retroarch-exe = pkgs.retroarch.withCores (
+    cores:
+    lib.filter (c:
+        (c ? libretroCore) &&
+        (lib.meta.availableOn pkgs.stdenv.hostPlatform c) &&
+        (lib.match "^fbalpha.*" c.core == null)
+    ) (
+      lib.attrValues cores
+    )
+  );
 in {
   imports = [
-    (import ./sessions.nix {inherit self;})
+    (import ./sessions.nix {inherit self retroarch-exe;})
     (import ./pad-control.nix {inherit self cmd-on-event;})
   ];
 
@@ -54,7 +64,7 @@ in {
       wine
       winetricks
       mesa-demos
-      retroarch-full
+      retroarch-exe
       vulkan-tools
     ];
 
