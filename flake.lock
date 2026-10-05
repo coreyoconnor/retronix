@@ -2,16 +2,17 @@
   "nodes": {
     "cmd-on-event": {
       "inputs": {
+        "devshell": "devshell",
+        "flake-utils": "flake-utils",
         "nixpkgs": "nixpkgs",
-        "sbt": "sbt",
-        "systems": "systems"
+        "scalino": "scalino"
       },
       "locked": {
-        "lastModified": 1723358723,
-        "narHash": "sha256-RT2fsSLhSOQ/vLwZol4OU1r8X+6ykshRsvROJg140rY=",
+        "lastModified": 1791176108,
+        "narHash": "sha256-Efe/16OSjmO9qjD00ZQz3WXs+dxXCkN8lqwABuQAofI=",
         "owner": "coreyoconnor",
         "repo": "cmd-on-event",
-        "rev": "bdd6ae4ce5ea1ac548118f9df8babd201050fedb",
+        "rev": "02a2453ad86e1ec2d23424721a093554d38db3ea",
         "type": "gitlab"
       },
       "original": {
@@ -20,13 +21,37 @@
         "type": "gitlab"
       }
     },
-    "flake-utils": {
+    "devshell": {
+      "inputs": {
+        "nixpkgs": [
+          "cmd-on-event",
+          "nixpkgs"
+        ]
+      },
       "locked": {
-        "lastModified": 1667395993,
-        "narHash": "sha256-nuEHfE/LcWyuSWnS8t12N1wc105Qtau+/OdUAjtQ0rA=",
+        "lastModified": 1788342953,
+        "narHash": "sha256-EWkNM4JzBhZ/Yn1PG6lP4/QJuFAFeHYlY5gVxXu940Y=",
+        "owner": "numtide",
+        "repo": "devshell",
+        "rev": "a67c0f87b63bcbdbdcb56785bec0205a2e3d6026",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "devshell",
+        "type": "github"
+      }
+    },
+    "flake-utils": {
+      "inputs": {
+        "systems": "systems"
+      },
+      "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "5aed5285a952e0b949eb3ba02c12fa4fcfef535f",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
         "type": "github"
       },
       "original": {
@@ -53,17 +78,36 @@
         "type": "github"
       }
     },
+    "flake-utils_3": {
+      "inputs": {
+        "systems": "systems_3"
+      },
+      "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1723357603,
-        "narHash": "sha256-oOJUNR6klinUH9xF5yypc5jmatwqKhTEd7TzoYX6PKc=",
+        "lastModified": 1790178388,
+        "narHash": "sha256-kK3t7gwoz4Nx8RF46cs1Xz/skKNcK7y3KYP+gGqX6W8=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "1d215eb380176a7745529565f96076476ee558a1",
+        "rev": "00455b0a3690d3f5dc61e9aef4277dc86235b73f",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -87,30 +131,32 @@
     "root": {
       "inputs": {
         "cmd-on-event": "cmd-on-event",
-        "flake-utils": "flake-utils_2",
+        "flake-utils": "flake-utils_3",
         "nixpkgs": "nixpkgs_2"
       }
     },
-    "sbt": {
+    "scalino": {
       "inputs": {
-        "flake-utils": "flake-utils",
+        "flake-utils": "flake-utils_2",
         "nixpkgs": [
           "cmd-on-event",
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1698464090,
-        "narHash": "sha256-Pnej7WZIPomYWg8f/CZ65sfW85IfIUjYhphMMg7/LT0=",
-        "owner": "zaninime",
-        "repo": "sbt-derivation",
-        "rev": "6762cf2c31de50efd9ff905cbcc87239995a4ef9",
+        "dir": "packaging/nix",
+        "lastModified": 1790214523,
+        "narHash": "sha256-XL8DrcCAfL0QtydtqCFh4uC455BZ+SIYaqoXwzFPmZE=",
+        "owner": "coreyoconnor",
+        "repo": "scalino",
+        "rev": "cb9273d064bc6858805b2c69a2c35caaa0611b48",
         "type": "github"
       },
       "original": {
-        "owner": "zaninime",
-        "ref": "master",
-        "repo": "sbt-derivation",
+        "dir": "packaging/nix",
+        "owner": "coreyoconnor",
+        "ref": "nix-flake-update",
+        "repo": "scalino",
         "type": "github"
       }
     },
@@ -130,6 +176,21 @@
       }
     },
     "systems_2": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "systems_3": {
       "locked": {
         "lastModified": 1681028828,
         "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
